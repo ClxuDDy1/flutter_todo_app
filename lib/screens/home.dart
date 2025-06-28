@@ -134,9 +134,12 @@ class _HomeState extends State<Home> {
       todo.isDone = !todo.isDone;
 
       // Sort the list: incomplete first, complete last
-      todosList.sort((a, b) {
-        if (a.isDone == b.isDone) return 0;
-        return a.isDone ? 1 : -1;
+      // so the value will be one of the following:
+      // 0 in case nothing happened
+
+      todosList.sort((firstTask, otherTask) {
+        if (firstTask.isDone == otherTask.isDone) return 0;
+        return firstTask.isDone ? 1 : -1;
       });
     });
   }
@@ -148,6 +151,9 @@ class _HomeState extends State<Home> {
       todosList.insert(
         0,
         ToDo(
+          // I could've used the random number generator package and created random strings here
+          // but using the DateTime as a unique id is alos valid
+          // عجبتني الفكرة الصراحة 😄
           id: DateTime.now().millisecondsSinceEpoch.toString(),
           todoText: toDo,
         ),
@@ -157,8 +163,10 @@ class _HomeState extends State<Home> {
   }
 
   void _runFilter(String enterKeyword) {
+    // this list will contain all the results this function finds desune
     List<ToDo> results = [];
     if (enterKeyword.isEmpty) {
+      // the regular tasks will be chilling like nothing happened in this case
       results = todosList;
     } else {
       results = todosList
@@ -168,6 +176,7 @@ class _HomeState extends State<Home> {
             ),
           )
           .toList();
+      // they all neeDed to be lowercase because uppercase characters have different ascii codes and that's annoying -_-
     }
     setState(() {
       _foundToDo = results;

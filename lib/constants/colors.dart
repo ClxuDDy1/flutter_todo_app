@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//  I'll just use dark mode I don't have time for this
+// but I'll keep the colors here anyway
 
 const Color tdRed = Color(0xFFDA4040);
 const Color tdBlue = Color(0xFF5f52ee);

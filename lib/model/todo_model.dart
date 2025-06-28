@@ -6,6 +6,8 @@ class ToDo {
 
   static List<ToDo> todoList() {
     return [
+      // these elements were used before I created the add and remove methods
+
       // ToDo(id: '01', todoText: 'playing final fantasy', isDone: true),
       // ToDo(id: '02', todoText: 'Buy Groceries', isDone: true),
       // ToDo(id: '03', todoText: 'Do push-ups'),
